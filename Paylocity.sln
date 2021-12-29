@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity", "Paylocity\Paylocity.csproj", "{8F854F36-7A0C-44D4-8025-85ED5E6C7072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.Tests", "Paylocity.Tests\Paylocity.Tests.csproj", "{846D6606-5278-475C-B24D-39E70714E617}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F854F36-7A0C-44D4-8025-85ED5E6C7072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F854F36-7A0C-44D4-8025-85ED5E6C7072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F854F36-7A0C-44D4-8025-85ED5E6C7072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F854F36-7A0C-44D4-8025-85ED5E6C7072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{846D6606-5278-475C-B24D-39E70714E617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846D6606-5278-475C-B24D-39E70714E617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846D6606-5278-475C-B24D-39E70714E617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846D6606-5278-475C-B24D-39E70714E617}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73E60349-386F-4E2F-A3B9-984477E9973B}
+	EndGlobalSection
+EndGlobal
