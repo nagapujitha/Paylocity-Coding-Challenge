@@ -1,0 +1,74 @@
+﻿@model dynamic
+<div class="text-center">
+    @{
+        var name = "";
+    }
+    @if (Model.Employee.Dependents.Count > 1)
+    {
+        name = "dependents";
+    }
+    else
+    {
+        name = "dependent";
+    }
+
+    <h4>
+        Employee Deduction Results for Employee: @Model.Employee.Name with @Model.Employee.Dependents.Count @name
+        @if (@Model.Employee.Dependents.Count > 0)
+        {
+            <span>
+                <br /><br />
+                Dependents:
+            </span>
+        }
+
+        @foreach (var dependant in Model.Employee.Dependents)
+        {
+            @dependant.Name
+            <br />
+        }
+
+    </h4>
+</div>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>    
+            <th></th>
+            <th scope="col">Paycheck</th>
+            <th scope="col">Per Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Amount to be Received</td>
+            <td>
+                @((decimal)Model.Employee.YearlySalary /Model.Employee.NumberOfPaychecksPerYear)
+            </td>
+            <td>@Model.Employee.YearlySalary</td>
+        </tr>
+
+        <tr>
+            <td>Deducted Amount</td>
+            <td>@Model.Results.TotalDeductionPerPayCheck.ToString("0.00")</td>
+            <td>@Model.Results.TotalDeductionPerYear</td>
+        </tr>
+
+        <tr>
+            <td>Amount Received</td>
+            <td>@Model.Results.SalaryPerPayCheckAfterDeductions.ToString("0.00")</td>
+            <td>@Model.Results.YearlySalaryAfterDeductions</td>
+        </tr>
+
+    </tbody>
+</table>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}

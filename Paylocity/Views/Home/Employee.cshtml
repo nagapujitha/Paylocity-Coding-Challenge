@@ -1,0 +1,116 @@
+﻿@model Paylocity.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calculate Employee Discount</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-inline">
+            <h4>Employee Information</h4>
+            <hr />
+
+            <div class="form-group">
+                @Html.Label("Name", htmlAttributes: new { @class = "col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Yearly Salary", htmlAttributes: new { @class = "col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.YearlySalary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.YearlySalary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Number of Paychecks per Year", htmlAttributes: new { @class = "col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumberOfPaychecksPerYear, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumberOfPaychecksPerYear, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div>
+            @if (Model.Dependents.Count > 0)
+            {
+                <h4>Dependents</h4>
+                <hr />
+                for (int i = 0; i < Model.Dependents.Count; i++)
+                {
+                <div class="form-inline">
+                   
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dependents[i].Name, htmlAttributes: new { @class = "col-md-8" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Dependents[i].Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Dependents[i].Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dependents[i].Type, htmlAttributes: new { @class = "col-md-8" })
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(model => model.Dependents[i].Type, new SelectList(ViewBag.types, "Text", "Value"), new { style = "width: 225px; height:34px", @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+
+                </div>
+                    <br />
+                }
+            }
+
+
+            <br />
+            <div class="col">
+                <button class="btn btn-primary" id="btnsave" type="submit">Calculate</button>
+            </div>
+
+        </div>
+        @*<div id="preloadDiv">
+
+        </div>*@
+
+    }
+  
+</body>
+</html>
+
+@*<script>
+    window.jQuery(document).ready(function () {
+        $('#btnsave').click(function () {
+        $.ajax({
+            url: '@Url.Action("Employee", "Home")',
+            data: null,
+            type: "POST",
+            success: function(data) {
+                $('#preloadDiv').html(data);
+            },
+            error: function () {
+                                            alert("error");
+                                        }
+        });
+    }
+</script>*@
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
+
+
