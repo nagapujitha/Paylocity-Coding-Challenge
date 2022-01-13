@@ -9,8 +9,7 @@ namespace Paylocity.Models
     
     public class Dependent : Person
     {
-        [Required]
-        public DependentType DependentType { get; set; }
+               public DependentType DependentType { get; set; }
        
     }
 

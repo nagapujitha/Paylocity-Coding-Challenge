@@ -8,7 +8,7 @@ namespace Paylocity.Tests
     public class DeductionByTypeTests
     {
         [TestMethod]
-        public void check_employee_deduction_rate()
+        public void Check_employee_deduction_rate()
         {
             // Arrange
             var employee = PersonType.Employee;
@@ -22,7 +22,7 @@ namespace Paylocity.Tests
         }
 
         [TestMethod]
-        public void check_dependent_deduction_rate()
+        public void Check_dependent_deduction_rate()
         {
             // Arrange
             var dependent = PersonType.Dependent;
@@ -38,10 +38,10 @@ namespace Paylocity.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void check_exception_for_invalid_enum()
+        public void Check_exception_for_invalid_enum()
         {
             // Arrange
-            var personType = (PersonType)100;
+            var personType = (PersonType)5;
             var deductionbyType = new DeductionByType();
 
             // Act

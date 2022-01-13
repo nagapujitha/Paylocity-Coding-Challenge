@@ -59,9 +59,9 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Dependents[i].Type, htmlAttributes: new { @class = "col-md-8" })
+                        @Html.LabelFor(model => model.Dependents[i].DependentType, htmlAttributes: new { @class = "col-md-8" })
                         <div class="col-sm-9">
-                            @Html.DropDownListFor(model => model.Dependents[i].Type, new SelectList(ViewBag.types, "Text", "Value"), new { style = "width: 225px; height:34px", @class = "form-control", required = "required" })
+                            @Html.DropDownListFor(model => model.Dependents[i].DependentType, new SelectList(ViewBag.types, "Text", "Value"), new { style = "width: 225px; height:34px", @class = "form-control", required = "required" })
                         </div>
                     </div>
 

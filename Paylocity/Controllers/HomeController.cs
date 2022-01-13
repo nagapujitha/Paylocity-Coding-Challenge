@@ -31,7 +31,7 @@ namespace Paylocity.Controllers
         public ActionResult Index()
         {
             List<SelectListItem> DependentNumberList = new List<SelectListItem>();
-            for (var i = 0; i <= 10; i++)
+            for (var i = 0; i <= 20; i++)
             {
                 DependentNumberList.Add(new SelectListItem() { Value = $"{(i == 0 ? "No" : i.ToString())} Dependent{(i == 1 ? "" : "s")}", Text = i.ToString() });
             }
@@ -43,12 +43,9 @@ namespace Paylocity.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
                     int noofDependents = int.Parse(Request.Form["noofDependents"].ToString());
                     return RedirectToAction("Employee", "Home", new { numberOfDependents = noofDependents });
-                }
-                return RedirectToAction("Index", "Home");
+               
             }
             catch (Exception ex1)
             {
@@ -57,9 +54,14 @@ namespace Paylocity.Controllers
             }
         }
 
-
-        public ActionResult Employee(int numberOfDependents)
+        
+        public ActionResult Employee(int? numberOfDependents)
         {
+            if (String.IsNullOrEmpty(numberOfDependents.ToString()))
+            {
+                return RedirectToAction("Index","Home");
+            }
+
             Employee employee = new Employee();
 
             employee.YearlySalary = Constants.Salary_per_PayCheck * Constants.Paychecks_per_Yr;
@@ -69,13 +71,19 @@ namespace Paylocity.Controllers
             {
                 employee.Dependents.Add(new Dependent() { DependentType = (i == 0 ? DependentType.Spouse : DependentType.Child) });
             }
+           
+            ViewBag.types = getDepedentTypes();
+            return View(employee);
+        }
+
+       private List<SelectListItem> getDepedentTypes()
+        {
             List<SelectListItem> dependentTypes = new List<SelectListItem>();
             foreach (var value in Enum.GetValues(typeof(DependentType)))
             {
                 dependentTypes.Add(new SelectListItem() { Text = value.ToString(), Value = value.ToString() });
             }
-            ViewBag.types = dependentTypes;
-            return View(employee);
+            return dependentTypes;
         }
 
         [HttpPost]
@@ -90,6 +98,8 @@ namespace Paylocity.Controllers
                     TempData["employee"] = employee;
                     return RedirectToAction("Results", "Home");
                 }
+               
+                ViewBag.types = getDepedentTypes();
                 return View(employee);
             }
             catch (Exception ex1)

@@ -8,7 +8,7 @@ namespace Paylocity.Tests
     public class DiscountCalculatorTests
     {
         [TestMethod]
-        public void check_no_discount_name_does_not_start_with_letter_a()
+        public void Check_no_discount_if_name_does_not_start_with_letter_a()
         {
             // Arrange
             var person = new Person() { Name = "Naga Paylocity" };
@@ -22,7 +22,7 @@ namespace Paylocity.Tests
         }
 
         [TestMethod]
-        public void check_10_percent_discount_rate_if_name_starts_with_letter_a()
+        public void Check_percent_discount_rate_if_name_starts_with_letter_a()
         {
             // Arrange
             var person = new Person() { Name = "America" };
@@ -36,7 +36,7 @@ namespace Paylocity.Tests
         }       
 
         [TestMethod]        
-        public void check_no_discount_if_person_name_is_null()
+        public void Check_no_discount_if_person_name_is_null()
         {
             // Arrange
             Person person = new Person();
