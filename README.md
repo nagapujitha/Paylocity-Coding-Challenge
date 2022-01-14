@@ -13,6 +13,7 @@ Please implement a web application based on these assumptions:
 2. There are 26 paychecks in a year 
 
 # Technologies Used
- 1 Visual Studio Enterprise 2017
- 2 .NET Framework 4.6.1
- 3  ASP.NET MVC 5.2.7
+1. Visual Studio Enterprise 2017 
+2. .NET Framework 4.6.1
+3. ASP.NET MVC 5.2.7
+
